@@ -42,7 +42,30 @@ class TestGetNetworkAddress(unittest.TestCase):
         resultAddress = self.ipaddrlib.get_network_address(queryAddress,queryMask)
         print "queried: %s - expected: %s - got: %s" % (queryAddress+'/'+queryMask,expectAddress,resultAddress)
         self.assertEqual(resultAddress, expectAddress)
-    
+        
+    def test_zero_mask(self):
+        queryAddress = '10.10.10.10'
+        queryMask = '0'
+        expectAddress = '0.0.0.0'
+        resultAddress = self.ipaddrlib.get_network_address(queryAddress,queryMask)
+        print "queried: %s - expected: %s - got: %s" % (queryAddress+'/'+queryMask,expectAddress,resultAddress)
+        self.assertEqual(resultAddress, expectAddress)
+        
+    def test_full_mask(self):
+        queryAddress = '10.10.10.10'
+        queryMask = '32'
+        expectAddress = '10.10.10.10'
+        resultAddress = self.ipaddrlib.get_network_address(queryAddress,queryMask)
+        print "queried: %s - expected: %s - got: %s" % (queryAddress+'/'+queryMask,expectAddress,resultAddress)
+        self.assertEqual(resultAddress, expectAddress)
+
+    def test_31_mask(self):
+        queryAddress = '10.10.10.10'
+        queryMask = '31'
+        expectAddress = '10.10.10.10'
+        resultAddress = self.ipaddrlib.get_network_address(queryAddress,queryMask)
+        print "queried: %s - expected: %s - got: %s" % (queryAddress+'/'+queryMask,expectAddress,resultAddress)
+        self.assertEqual(resultAddress, expectAddress)
     
         
 
@@ -71,7 +94,6 @@ class TestGetHostnameFromIp(unittest.TestCase):
         resultHostname = self.ipaddrlib.get_hostname_from_ip(queryAddress)
         print "queried: %s - expected: %s - got: %s" % (queryAddress,expectHostname,resultHostname)
         self.assertEqual(resultHostname, expectHostname)
-
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
