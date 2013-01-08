@@ -52,14 +52,25 @@ class TestGetIpFromHostname(unittest.TestCase):
         from IPAddrLibrary.Keywords import Keywords
         self.ipaddrlib = Keywords()
     
-    def test(self):
-        pass
+    def test_fqdn_lookup(self):
+        queryHostname = 'google-public-dns-a.google.com'
+        expectAddress = '8.8.8.8'
+        resultAddress = self.ipaddrlib.get_ip_from_hostname(queryHostname)
+        print "queried: %s - expected: %s - got: %s" % (queryHostname,expectAddress,resultAddress)
+        self.assertEqual(resultAddress, expectAddress)
     
 class TestGetHostnameFromIp(unittest.TestCase):
     
-    def a_test(self):
-        pass
-
+    def setUp(self):
+        from IPAddrLibrary.Keywords import Keywords
+        self.ipaddrlib = Keywords()
+    
+    def test_fqdn_lookup(self):
+        queryAddress = '8.8.8.8'
+        expectHostname = 'google-public-dns-a.google.com'
+        resultHostname = self.ipaddrlib.get_hostname_from_ip(queryAddress)
+        print "queried: %s - expected: %s - got: %s" % (queryAddress,expectHostname,resultHostname)
+        self.assertEqual(resultHostname, expectHostname)
 
 
 if __name__ == "__main__":
