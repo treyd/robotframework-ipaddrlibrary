@@ -94,6 +94,42 @@ class TestGetHostnameFromIp(unittest.TestCase):
         resultHostname = self.ipaddrlib.get_hostname_from_ip(queryAddress)
         print "queried: %s - expected: %s - got: %s" % (queryAddress,expectHostname,resultHostname)
         self.assertEqual(resultHostname, expectHostname)
+        
+class TestGetHostnameFromUrl(unittest.TestCase):
+    
+    def setUp(self):
+        from IPAddrLibrary.Keywords import Keywords
+        self.ipaddrlib = Keywords()
+        
+    def test_fqdn_url(self):
+        queryUrl = 'http://www.google.com'
+        expectHostname = 'www.google.com'
+        resultHostname = self.ipaddrlib.get_hostname_from_url(url=queryUrl)
+        print "queried: %s - expected: %s - got: %s" % (queryUrl,expectHostname,resultHostname)
+        self.assertEqual(resultHostname, expectHostname)
+    
+    def test_nonqual_url(self):
+        queryUrl = 'http://google'
+        expectHostname = 'google'
+        resultHostname = self.ipaddrlib.get_hostname_from_url(url=queryUrl)
+        print "queried: %s - expected: %s - got: %s" % (queryUrl,expectHostname,resultHostname)
+        self.assertEqual(resultHostname, expectHostname)
+
+    def test_user_url(self):
+        queryUrl = 'http://bob:bobbson@www.google.com'
+        expectHostname = 'www.google.com'
+        resultHostname = self.ipaddrlib.get_hostname_from_url(url=queryUrl)
+        print "queried: %s - expected: %s - got: %s" % (queryUrl,expectHostname,resultHostname)
+        self.assertEqual(resultHostname, expectHostname)
+        
+    def test_https_url_with_path_and_port(self):
+        queryUrl = 'https://www.google.com:8888/blah/bloo/blee'
+        expectHostname = 'www.google.com'
+        resultHostname = self.ipaddrlib.get_hostname_from_url(url=queryUrl)
+        print "queried: %s - expected: %s - got: %s" % (queryUrl,expectHostname,resultHostname)
+        self.assertEqual(resultHostname, expectHostname)
+
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
