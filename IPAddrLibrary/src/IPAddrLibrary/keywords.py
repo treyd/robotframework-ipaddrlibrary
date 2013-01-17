@@ -50,9 +50,9 @@ class Keywords(object):
         | ${host2} = | Get Hostname from URL | ftp://bob:pass@ftp.site.net/ |
         | ${host3} = | Get Hostname from URL | https://proxy:8080 |
         =>
-        | ${host1} = www.google.com
-        | ${host2} = ftp.site.net
-        | ${host3} = proxy
+        | ${host1} = 'www.google.com'
+        | ${host2} = 'ftp.site.net'
+        | ${host3} = 'proxy'
         """
         # split url based on slashes
         url_split = url.split('/')
