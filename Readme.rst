@@ -14,9 +14,9 @@ This library depends on python-iplib (http://www.mimante.net/soft/iplib)
 Installation
 ============
 
-   1. Download latest tar.gz from dist directory
-   1. Unzip to your Robot Framework library directory
-   1. Add "IPAddrLibrary" to your test suite's Settings table, e.g::
+1. Download latest tar.gz from dist directory
+1. Unzip to your Robot Framework library directory
+1. Add "IPAddrLibrary" to your test suite's Settings table, e.g::
    
    *** Settings ***
    | Library | ./IPAddrLibrary/ |
