@@ -19,14 +19,14 @@ Installation
 ------------
 
 1.  Install python-iplib (pip install iplib)
-1.  Get the source
-1.  Copy src/IPAddrLibrary to your Robot Framework library directory
-1.  Add "IPAddrLibrary" to your test suite's Settings table, e.g::
+2.  Get the source
+3.  Copy src/IPAddrLibrary to your Robot Framework library directory
+4.  Add "IPAddrLibrary" to your test suite's Settings table, e.g::
    
-   *** Settings ***
-   | Library | ./IPAddrLibrary/ |
+        *** Settings ***
+        | Library | ./IPAddrLibrary/ |
    
-1.  Start using the keywords in your user keywords and test cases.
+You can now start using the keywords in your user keywords and test cases.
 
 Issues
 ------
